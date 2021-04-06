@@ -67,7 +67,8 @@ class PersonalController extends Controller
      */
     public function edit($id)
     {
-        //
+        $per = Personal::find($id);
+        return view('personales.edit', compact('per'));
     }
 
     /**
@@ -79,7 +80,18 @@ class PersonalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $person = Personal::find($id);
+        $person->per_nombre = $request->per_nombre;
+        $person->per_apellido = $request->per_apellido;
+        $person->per_cedula = $request->per_cedula;
+        $person->per_telefono = $request->per_telefono;
+        $person->tipo_persona = $request->tipo_persona;
+        $person->per_estado = 'ACTIVO';
+        $person->user = $request->user;
+        $person->pass = $request->pass;
+        $person->nivel = $request->nivel;
+        $person->save();
+        return redirect()->route('personales.index')->with('info','Personal Fue Modificiada');
     }
 
     /**
@@ -90,6 +102,15 @@ class PersonalController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $per = Personal::find($id);
+        $per->delete();
+        return back()->with('info', 'Fue eliminado exitosamente');
+    }
+    public function cambiarEstado($id)
+    {
+        $per = Personal::find($id);
+        $per->per_estado = 'INACTIVO';
+        $per->save();
+        return redirect()->route('personales.index')->with('info','Personal Fue Cambiado');
     }
 }
