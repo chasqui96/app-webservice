@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <form method="put" action="{{ route('pacientes.update',$pacie->id) }}">
-                        @csrf
+            <form method="post" action="{{ route('pacientes.update',$pacie->id) }}">
+                       
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
