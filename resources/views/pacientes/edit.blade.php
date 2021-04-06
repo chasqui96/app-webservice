@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
             <form method="post" action="{{ route('pacientes.update',$pacie->id) }}">
-                       
+                {{ csrf_field()}}
 
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('NOMBRE') }}</label>
