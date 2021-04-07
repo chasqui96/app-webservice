@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-            <form method="PUT" action="{{ route('personales.update',$per->id) }}">
+            <form method="post" action="{{ route('personales.update',$per->id) }}">
                         @csrf
 
                         <div class="form-group row">

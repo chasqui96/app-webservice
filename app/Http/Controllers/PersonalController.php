@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Personal;
 use DataTables;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 class PersonalController extends Controller
 {
     /**
@@ -10,6 +12,43 @@ class PersonalController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function vistaLogin()
+    {
+      
+        return view('auth.login');
+    }
+
+    public function loguear(Request $request)
+    {
+      
+        $validator = Validator::make($request->all(), [
+            'email'    => 'required|max:150',
+            'password' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'status'  => 500,
+                'message' => 'Debes de ingresar tu usuario y/o contraseña',
+            ], 500);
+        }
+
+        $user = Personal::where('user', '=', $request->input('email'))->first();
+
+        if ($user) {
+            if (Hash::check($request->input('password'), $user->pass)) {
+               return view('/home');
+                // return $user;
+            }
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Usuario/Contraseña incorrectos',
+        ], 500);
+    }
+
     public function index()
     {
         $per = Personal::all();
@@ -42,10 +81,16 @@ class PersonalController extends Controller
         $person->tipo_persona = $request->tipo_persona;
         $person->per_estado = 'ACTIVO';
         $person->user = $request->user;
-        $person->pass = $request->pass;
+        $person->pass = Hash::make($request->pass);
         $person->nivel = $request->nivel;
-        $person->save();
-        return redirect()->route('personales.index')->with('info','personal Fue Agregado');
+        if ($person->save()) {
+            return $person;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Usuario/Contraseña incorrectos',
+        ], 500);
     }
 
     /**
@@ -88,10 +133,20 @@ class PersonalController extends Controller
         $person->tipo_persona = $request->tipo_persona;
         $person->per_estado = 'ACTIVO';
         $person->user = $request->user;
-        $person->pass = $request->pass;
+        if ($request->has("password")) {
+            $person->pass = Hash::make($request->pass);
+        }
         $person->nivel = $request->nivel;
-        $person->save();
-        return redirect()->route('personales.index')->with('info','Personal Fue Modificiada');
+    
+        if ($person->save()) {
+            return $person;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Usuario/Contraseña incorrectos',
+        ], 500);
+
     }
 
     /**

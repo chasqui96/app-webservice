@@ -22,7 +22,7 @@ class CreatePersonalsTable extends Migration
             $table->string("tipo_persona",30);
             $table->string("per_estado",30);
             $table->string("user",30);
-            $table->string("pass",30);
+            $table->string("pass",120);
             $table->string("nivel",30);
 
         });

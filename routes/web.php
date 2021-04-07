@@ -21,6 +21,9 @@ Route::get('/', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+/// ------LOGIN-----------------------------
+Route::get('/login', [App\Http\Controllers\PersonalController::class, 'vistaLogin'])->name('login');
+Route::post('/loguear', [App\Http\Controllers\PersonalController::class, 'loguear'])->name('logueo');
 
 ///------ESPECIALIDADES--------------------------
 Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'index'])->name('especialidades.index');//->middleware('auth');
@@ -45,7 +48,7 @@ Route::get('/ListarPersonales', [App\Http\Controllers\PersonalController::class,
 Route::get('/MostrarPersonales', [App\Http\Controllers\PersonalController::class, 'create'])->name('personales.create');
 Route::post('/GuardarPersonales', [App\Http\Controllers\PersonalController::class, 'store'])->name('personales.store');
 Route::get('/FormularioEditarPersonal/{id}', [App\Http\Controllers\PersonalController::class, 'edit'])->name('personales.edit');
-Route::put('/EditarPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'update'])->name('personales.update');
+Route::post('/EditarPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'update'])->name('personales.update');
 Route::delete('/EliminarPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'destroy'])->name('personales.destroy');
 Route::put('/CambiarEstadoPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'cambiarEstado'])->name('personales.cambiar');
 
