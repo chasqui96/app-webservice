@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 ///------ESPECIALIDADES--------------------------
-Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'index'])->name('especialidades.index')->middleware('auth');
+Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'index'])->name('especialidades.index');//->middleware('auth');
 Route::get('/MostrarEspe', [App\Http\Controllers\EspecialidadController::class, 'create'])->name('especialidades.create');
 Route::post('/GuardarEspe', [App\Http\Controllers\EspecialidadController::class, 'store'])->name('especialidades.store');
 Route::get('/Editar/{id}', [App\Http\Controllers\EspecialidadController::class, 'edit'])->name('especialidades.edit');
