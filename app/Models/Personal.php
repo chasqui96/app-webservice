@@ -9,4 +9,7 @@ class Personal extends Model
 {
     public $timestamps = false;
     use HasFactory;
+    protected $hidden = [
+        'password'
+    ];
 }
