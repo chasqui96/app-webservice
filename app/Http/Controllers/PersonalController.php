@@ -43,10 +43,10 @@ class PersonalController extends Controller
             }
         }
 
-        return response()->json([
+       /*  return response()->json([
             'status'  => 500,
             'message' => 'Usuario/Contraseña incorrectos',
-        ], 500);
+        ], 500); */
     }
 
     public function index()
