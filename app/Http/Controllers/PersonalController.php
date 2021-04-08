@@ -38,8 +38,8 @@ class PersonalController extends Controller
 
         if ($user) {
             if (Hash::check($request->input('password'), $user->pass)) {
-               return view('/home');
-                // return $user;
+               //return view('/home');
+            return $user;
             }
         }
 
