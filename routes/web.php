@@ -20,5 +20,5 @@ Route::get('/', function () {
 
 ///Route::resource('especialidades', App\Http\Controllers\EspecialidadController::class);
 
-Route::post("/loguear", "App\Http\Controllers\PersonalController@loguear");
+Route::post("/loguear", "App\Http\Controllers\PersonalController@loguear")->name('logueo');;
 
