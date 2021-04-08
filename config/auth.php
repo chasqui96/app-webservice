@@ -13,9 +13,13 @@ return [
     |
     */
 
-    'defaults' => [
+   /*  'defaults' => [
         'guard' => 'web',
         'passwords' => 'users',
+    ], */
+    'defaults' => [
+        'guard' => 'personalP',
+        'passwords' => 'personal',
     ],
 
     /*
@@ -46,7 +50,7 @@ return [
             'provider' => 'users',
             
         ],
-        'personal' => [
+        'personalP' => [
             'driver' => 'session',
             'provider' => 'personal',
             
@@ -105,6 +109,12 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'personal' => [
+            'provider' => 'personal',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
