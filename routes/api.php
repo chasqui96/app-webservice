@@ -18,7 +18,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 /// ------LOGIN-----------------------------
 Route::get('/login', [App\Http\Controllers\PersonalController::class, 'vistaLogin'])->name('login');
-Route::post('/loguear', [App\Http\Controllers\PersonalController::class, 'loguear'])->name('logueo');
+Route::post("/loguear", "PersonalController@loguear");
 
 ///------ESPECIALIDADES--------------------------
 Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'index'])->name('especialidades.index');//->middleware('auth');
