@@ -18,9 +18,6 @@ Route::get('/', function () {
 });
 
 
-
-
-
 ///Route::resource('especialidades', App\Http\Controllers\EspecialidadController::class);
 
 
