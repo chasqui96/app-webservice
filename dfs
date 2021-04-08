@@ -1,0 +1,128 @@
+[33mcommit 5770cebfdebd95255b83a2b515c8fe2c2d596940[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: chasqui96 <chasqui270596@gmail.com>
+Date:   Tue Apr 6 22:03:34 2021 -0400
+
+    main, se procedio a agregar nuevas funciones en los archivos personalControllers
+
+[33mcommit ab7f8c352640924d34170fe10f715169166953eb[m
+Author: chasqui96 <chasqui270596@gmail.com>
+Date:   Tue Apr 6 21:02:59 2021 -0400
+
+    main, se actualizo ruta
+
+[33mcommit c2f1db1d3875afffeb43de1469e7632f08e1f63b[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:41:41 2021 -0400
+
+    main,nuevos cambios a la rutas
+
+[33mcommit 236c8b928a63b647bbc85d9ee1c7d790ece64c15[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:38:56 2021 -0400
+
+    main,se corrige errores a la de fechar
+
+[33mcommit bebcd2000cf7d7fe0ddfd0c83ddfde932a665499[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:37:47 2021 -0400
+
+    main,se corrige errores a la de fechar
+
+[33mcommit a4c3d4fa985a6a731506b4dd3250d148bc762bfb[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:35:38 2021 -0400
+
+    main,se corrige errores a la de fechar
+
+[33mcommit 81573d1c9bd8eaee8ac76d66f98029b62c505d04[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:32:41 2021 -0400
+
+    main,se verifica el error de ahora
+
+[33mcommit 15e3604a520c5de1e8b3066ca331a34bd97bfec6[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:29:59 2021 -0400
+
+    main,se verifica el error
+
+[33mcommit 78ec44606dd0bf848ff50c2d4fe8c6379587329b[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:27:17 2021 -0400
+
+    main, se verifico el cambio de algunas rutas
+
+[33mcommit 406ebfb534bd099dbb5f49ca478ff9b7ffd1aef1[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 17:15:03 2021 -0400
+
+    main, se verifico el cambio de algunas rutas
+
+[33mcommit 531a7c72f5aa32785313eb28a650bf76a59b7a24[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 16:07:53 2021 -0400
+
+    main, se quita la app route
+
+[33mcommit 3023e07814f88e710d2c8a9b656fcce07c71e12f[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 16:05:59 2021 -0400
+
+    main,datos varios ahora
+
+[33mcommit 2f78f4c010fb049d6116569dd500c90b0710c07a[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 15:54:02 2021 -0400
+
+    main,datos varios
+
+[33mcommit 6e389de27d8a9acd354e6e1d9529aa99eb92961c[m
+Merge: 94f3f91 de6a79b
+Author: chasqui96 <42074379+chasqui96@users.noreply.github.com>
+Date:   Tue Apr 6 15:37:06 2021 -0400
+
+    Merge pull request #3 from chasqui96/views
+    
+    views, se agrego MVC personales
+
+[33mcommit de6a79bd3d2f25b0b8bddc76f5dabf8876eeda52[m[33m ([m[1;31morigin/views[m[33m, [m[1;32mviews[m[33m)[m
+Author: chasqui96 <chasqui270596@gmail.com>
+Date:   Tue Apr 6 15:31:41 2021 -0400
+
+    views, se agrego MVC personales
+
+[33mcommit 94f3f91b2282b4a9057f129d04ea7232d4dcf109[m
+Merge: 85b18ab cdcfd8c
+Author: chasqui96 <42074379+chasqui96@users.noreply.github.com>
+Date:   Tue Apr 6 15:06:45 2021 -0400
+
+    Merge pull request #2 from chasqui96/config
+    
+    config, se agrega codigo en el archivo composer.json
+
+[33mcommit cdcfd8c5e93deb4aed677ca4f8daaa4718dc9c5e[m[33m ([m[1;31morigin/config[m[33m)[m
+Author: Chasqui <luisfernandogarciapenha@gmail.com>
+Date:   Tue Apr 6 15:05:45 2021 -0400
+
+    config, se agrega codigo en el archivo composer.json
+
+[33mcommit 85b18ab19d53930f0298e8cbdaa0dd7a03222e2f[m
+Merge: 6e98633 8b0f232
+Author: chasqui96 <42074379+chasqui96@users.noreply.github.com>
+Date:   Tue Apr 6 14:20:41 2021 -0400
+
+    Merge pull request #1 from chasqui96/config
+    
+    config, se agrego el archivo para ejecutar apache
+
+[33mcommit 8b0f232a3e08484b13ba01ad97850bd0196ef556[m[33m ([m[1;32mconfig[m[33m)[m
+Author: chasqui96 <chasqui270596@gmail.com>
+Date:   Tue Apr 6 14:15:07 2021 -0400
+
+    config, se agrego el archivo para ejecutar apache
+
+[33mcommit 6e986338b236f7aee3c259ddc5b71a844d6534e0[m
+Author: chasqui96 <chasqui270596@gmail.com>
+Date:   Tue Apr 6 13:37:28 2021 -0400
+
+    primer commit
