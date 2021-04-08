@@ -52,7 +52,7 @@ class PersonalController extends Controller
     public function index()
     {
         $per = Personal::all();
-        return view('personales.index', compact('per'));
+        return $per;
     }
 
     /**
