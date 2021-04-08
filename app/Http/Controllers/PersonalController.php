@@ -74,15 +74,15 @@ class PersonalController extends Controller
     public function store(Request $request)
     {
         $person = new Personal;
-        $person->per_nombre = $request->per_nombre;
-        $person->per_apellido = $request->per_apellido;
-        $person->per_cedula = $request->per_cedula;
-        $person->per_telefono = $request->per_telefono;
-        $person->tipo_persona = $request->tipo_persona;
+        $person->per_nombre =   $request->input("per_nombre");
+        $person->per_apellido = $request->input("per_apellido");
+        $person->per_cedula =   $request->input("per_cedula");
+        $person->per_telefono = $request->input("per_telefono");
+        $person->tipo_persona = $request->input("tipo_persona");
         $person->per_estado = 'ACTIVO';
-        $person->user = $request->user;
-        $person->pass = Hash::make($request->pass);
-        $person->nivel = $request->nivel;
+        $person->user = $request->input("username");
+        $person->pass = Hash::make($request->input('password'));
+        $person->nivel = '1';
         if ($person->save()) {
             return $person;
         }
