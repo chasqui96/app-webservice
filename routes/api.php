@@ -19,7 +19,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /// ------LOGIN-----------------------------
 Route::get('/login', [App\Http\Controllers\PersonalController::class, 'vistaLogin'])->name('login');
 
-Route::post("/loguear", "App\Http\Controllers\PersonalController@loguear");
+Route::post("/loguear", "App\Http\Controllers\PersonalController@loguear")->name('logueo');;
 ///------ESPECIALIDADES--------------------------
 Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'index'])->name('especialidades.index');//->middleware('auth');
 Route::get('/MostrarEspe', [App\Http\Controllers\EspecialidadController::class, 'create'])->name('especialidades.create');
