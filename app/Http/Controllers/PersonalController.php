@@ -80,7 +80,7 @@ class PersonalController extends Controller
         $person->per_telefono = $request->input("per_telefono");
         $person->tipo_persona = $request->input("tipo_persona");
         $person->per_estado = 'ACTIVO';
-        $person->user = $request->input("username");
+        $person->user = $request->input("user");
         $person->pass = Hash::make($request->input('password'));
         $person->nivel = '1';
         if ($person->save()) {
