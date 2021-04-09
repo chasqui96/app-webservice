@@ -123,20 +123,20 @@ class PersonalController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $person = Personal::find($id);
-        $person->per_nombre = $request->per_nombre;
-        $person->per_apellido = $request->per_apellido;
-        $person->per_cedula = $request->per_cedula;
-        $person->per_telefono = $request->per_telefono;
-        $person->tipo_persona = $request->tipo_persona;
+        $person = Personal::find($request->input("id"));
+        $person->per_nombre =   $request->input("per_nombre");
+        $person->per_apellido = $request->input("per_apellido");
+        $person->per_cedula =   $request->input("per_cedula");
+        $person->per_telefono = $request->input("per_telefono");
+        $person->tipo_persona = $request->input("tipo_persona");
         $person->per_estado = 'ACTIVO';
-        $person->user = $request->user;
+        $person->user = $request->input("user");
         if ($request->has("password")) {
-            $person->pass = Hash::make($request->pass);
+            $person->pass = Hash::make($request->input('password'));
         }
-        $person->nivel = $request->nivel;
+        $person->nivel = '1';
     
         if ($person->save()) {
             return $person;
