@@ -161,11 +161,17 @@ class PersonalController extends Controller
         $per->delete();
         return back()->with('info', 'Fue eliminado exitosamente');
     }
-    public function cambiarEstado($id)
+    public function cambiarEstado(Request $request)
     {
-        $per = Personal::find($id);
-        $per->per_estado = 'INACTIVO';
-        $per->save();
-        return redirect()->route('personales.index')->with('info','Personal Fue Cambiado');
+        $per = Personal::find($request->input("id"));
+        $per->per_estado = $request->input("per_estado");
+        if ($per->save()) {
+            return $per;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Usuario/Contraseña incorrectos',
+        ], 500);
     }
 }
