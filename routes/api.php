@@ -45,5 +45,5 @@ Route::post('/GuardarPersonales', [App\Http\Controllers\PersonalController::clas
 Route::get('/FormularioEditarPersonal/{id}', [App\Http\Controllers\PersonalController::class, 'edit'])->name('personales.edit');
 Route::post('/EditarPersonales/editar', [App\Http\Controllers\PersonalController::class, 'update'])->name('personales.update');
 Route::delete('/EliminarPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'destroy'])->name('personales.destroy');
-Route::put('/CambiarEstadoPersonales', [App\Http\Controllers\PersonalController::class, 'cambiarEstado'])->name('personales.cambiar');
+Route::post('/CambiarEstadoPersonales', [App\Http\Controllers\PersonalController::class, 'cambiarEstado'])->name('personales.cambiar');
 
