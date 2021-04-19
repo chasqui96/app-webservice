@@ -33,9 +33,9 @@ Route::get('/ListarPacientes', [App\Http\Controllers\PacienteController::class, 
 Route::get('/MostrarPacientes', [App\Http\Controllers\PacienteController::class, 'create'])->name('pacientes.create');
 Route::post('/GuardarPacientes', [App\Http\Controllers\PacienteController::class, 'store'])->name('pacientes.store');
 Route::get('/FormularioEditarPaciente/{id}', [App\Http\Controllers\PacienteController::class, 'edit'])->name('pacientes.edit');
-Route::post('/EditarPacientes/{id}', [App\Http\Controllers\PacienteController::class, 'update'])->name('pacientes.update');
+Route::post('/EditarPacientes/editar', [App\Http\Controllers\PacienteController::class, 'update'])->name('pacientes.update');
 Route::get('/EliminarPacientes/{id}', [App\Http\Controllers\PacienteController::class, 'destroy'])->name('pacientes.destroy');
-Route::put('/CambiarEstadoPacientes/{id}', [App\Http\Controllers\PacienteController::class, 'cambiarEstado'])->name('pacientes.cambiar');
+Route::put('/CambiarEstadoPacientes', [App\Http\Controllers\PacienteController::class, 'cambiarEstado'])->name('pacientes.cambiar');
 
 
 /// ------PERSONALES-----------------------------

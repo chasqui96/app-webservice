@@ -16,7 +16,7 @@ class PacienteController extends Controller
     public function index()
     {
         $pacie = Paciente::all();
-        return view('pacientes.index', compact('pacie'));
+        return $pacie;
     }
 
     /**
@@ -38,14 +38,20 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $pacient = new Paciente;
-        $pacient->paciente_nombre = $request->paciente_nombre;
-        $pacient->paciente_apellido = $request->paciente_apellido;
-        $pacient->paciente_fecha_nac = $request->paciente_fecha_nac;
-        $pacient->paciente_cedula = $request->paciente_cedula;
-        $pacient->paciente_telefono = $request->paciente_telefono;
+        $pacient->paciente_nombre = $request->input("paciente_nombre");
+        $pacient->paciente_apellido = $request->input("paciente_apellido");
+        $pacient->paciente_fecha_nac = $request->input("paciente_fecha_nacimiento");
+        $pacient->paciente_cedula = $request->input("paciente_cedula");
+        $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
-        $pacient->save();
-        return redirect()->route('pacientes.index')->with('info','peciente Fue Agregado');
+        if ($person->save()) {
+            return $pacient;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo insertar',
+        ], 500);
   
     }
 
@@ -80,17 +86,23 @@ class PacienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $pacient = Paciente::find($id);
-        $pacient->paciente_nombre = $request->paciente_nombre;
-        $pacient->paciente_apellido = $request->paciente_apellido;
-        $pacient->paciente_fecha_nac = $request->paciente_fecha_nac;
-        $pacient->paciente_cedula = $request->paciente_cedula;
-        $pacient->paciente_telefono = $request->paciente_telefono;
+        $pacient = Paciente::find($request->input("id"));
+        $pacient->paciente_nombre = $request->input("paciente_nombre");
+        $pacient->paciente_apellido = $request->input("paciente_apellido");
+        $pacient->paciente_fecha_nac = $request->input("paciente_fecha_nacimiento");
+        $pacient->paciente_cedula = $request->input("paciente_cedula");
+        $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
-        $pacient->save();
-        return redirect()->route('pacientes.index')->with('info','Paciente Fue Modificiada');
+        if ($person->save()) {
+            return $pacient;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo Editar',
+        ], 500);
     }
 
     /**
@@ -106,11 +118,17 @@ class PacienteController extends Controller
         return back()->with('info', 'Fue eliminado exitosamente');
     }
 
-    public function cambiarEstado($id)
+    public function cambiarEstado(Request $request)
     {
-        $pacie = Paciente::find($id);
-        $pacie->paciente_estado = 'INACTIVO';
-        $pacie->save();
-        return redirect()->route('pacientes.index')->with('info','Paciente Fue Cambiado');
+        $paciente = Paciente::find($request->input("id"));
+        $paciente->per_estado = $request->input("paciente_estado");
+        if ($paciente->save()) {
+            return $paciente;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo cambiar de estado',
+        ], 500);
     }
 }
