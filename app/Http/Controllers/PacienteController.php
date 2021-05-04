@@ -19,6 +19,7 @@ class PacienteController extends Controller
         foreach ($pacie as $value) {
             $pacie->paciente_fecha_nac = date('d/m/Y', strtotime($value->paciente_fecha_nac));
         }
+        dd($pacie);
         return $pacie;
     }
 
