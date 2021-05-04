@@ -139,7 +139,7 @@ class PacienteController extends Controller
     public function cambiarEstado(Request $request)
     {
         $paciente = Paciente::find($request->input("id"));
-        $paciente->per_estado = $request->input("paciente_estado");
+        $paciente->paciente_estado = $request->input("paciente_estado");
         if ($paciente->save()) {
             return $paciente;
         }
