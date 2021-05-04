@@ -29,7 +29,7 @@ class PacienteController extends Controller
             $i++;
                   
         }
-        return  json_encode($paciente);
+        return $paciente;
     }
 
     /**
