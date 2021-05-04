@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Paciente;
 use DataTables;
-
+use Carbon\Carbon;
 class PacienteController extends Controller
 {
     /**
@@ -40,7 +40,7 @@ class PacienteController extends Controller
         $pacient = new Paciente;
         $pacient->paciente_nombre = $request->input("paciente_nombre");
         $pacient->paciente_apellido = $request->input("paciente_apellido");
-        $pacient->paciente_fecha_nac = date('Y-m-d', strtotime($request->input("paciente_fecha_nacimiento")));
+        $pacient->paciente_fecha_nac =Carbon::parse($request->input("paciente_fecha_nacimiento"));    
         $pacient->paciente_cedula = $request->input("paciente_cedula");
         $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
@@ -91,7 +91,7 @@ class PacienteController extends Controller
         $pacient = Paciente::find($request->input("id"));
         $pacient->paciente_nombre = $request->input("paciente_nombre");
         $pacient->paciente_apellido = $request->input("paciente_apellido");
-        $pacient->paciente_fecha_nac = date('Y-m-d', strtotime($request->input("paciente_fecha_nacimiento")));
+        $pacient->paciente_fecha_nac =Carbon::parse($request->input("paciente_fecha_nacimiento"));  
         $pacient->paciente_cedula = $request->input("paciente_cedula");
         $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
