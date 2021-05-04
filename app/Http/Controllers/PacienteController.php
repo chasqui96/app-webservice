@@ -40,11 +40,11 @@ class PacienteController extends Controller
         $pacient = new Paciente;
         $pacient->paciente_nombre = $request->input("paciente_nombre");
         $pacient->paciente_apellido = $request->input("paciente_apellido");
-        $pacient->paciente_fecha_nac = $request->input("paciente_fecha_nacimiento");
+        $pacient->paciente_fecha_nac = date('d-m-Y', strtotime($request->input("paciente_fecha_nacimiento")));
         $pacient->paciente_cedula = $request->input("paciente_cedula");
         $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
-        if ($person->save()) {
+        if ($pacient->save()) {
             return $pacient;
         }
 
@@ -91,11 +91,11 @@ class PacienteController extends Controller
         $pacient = Paciente::find($request->input("id"));
         $pacient->paciente_nombre = $request->input("paciente_nombre");
         $pacient->paciente_apellido = $request->input("paciente_apellido");
-        $pacient->paciente_fecha_nac = $request->input("paciente_fecha_nacimiento");
+        $pacient->paciente_fecha_nac = date('d-m-Y', strtotime($request->input("paciente_fecha_nacimiento")));
         $pacient->paciente_cedula = $request->input("paciente_cedula");
         $pacient->paciente_telefono = $request->input("paciente_telefono");
         $pacient->paciente_estado = 'ACTIVO';
-        if ($person->save()) {
+        if ($pacient->save()) {
             return $pacient;
         }
 
