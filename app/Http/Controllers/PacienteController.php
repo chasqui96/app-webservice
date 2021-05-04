@@ -20,12 +20,12 @@ class PacienteController extends Controller
         $i = 0;
         foreach ($pacie as $value) {
             $paciente[$i]['id']= $value->id;
-            $paciente[$i]['paciente_nombre ']= $value->paciente_nombre;
+            $paciente[$i]['paciente_nombre']= $value->paciente_nombre;
             $paciente[$i]['paciente_apellido'] = $value->paciente_apellido;
-            $paciente[$i]['paciente_cedula ']= $value->paciente_cedula;
+            $paciente[$i]['paciente_cedula']= $value->paciente_cedula;
             $paciente[$i]['paciente_fecha_nac'] = date('d/m/Y', strtotime($value->paciente_fecha_nac));
             $paciente[$i]['paciente_telefono'] = $value->paciente_telefono;
-            $paciente[$i]['paciente_estado ']=  $value->paciente_estado;
+            $paciente[$i]['paciente_estado']=  $value->paciente_estado;
             $i++;
                   
         }
