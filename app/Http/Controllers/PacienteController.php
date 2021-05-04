@@ -37,7 +37,7 @@ class PacienteController extends Controller
      */
     public function store(Request $request)
     {
-        $fechaNacimiento = str_replace('/', '-', $request->input("paciente_fecha_nacimiento"));
+        $fechaNacimiento = str_replace('/', '-', $request->input("paciente_fecha_nac"));
 		$fechaNacimiento = date('Y-m-d', strtotime($fechaNacimiento ));
         $pacient = new Paciente;
         $pacient->paciente_nombre = $request->input("paciente_nombre");
@@ -90,7 +90,7 @@ class PacienteController extends Controller
      */
     public function update(Request $request)
     {
-        $fechaNacimiento = str_replace('/', '-', $request->input("paciente_fecha_nacimiento"));
+        $fechaNacimiento = str_replace('/', '-', $request->input("paciente_fecha_nac"));
 		$fechaNacimiento = date('Y-m-d', strtotime($fechaNacimiento ));
 
         $pacient = Paciente::find($request->input("id"));
