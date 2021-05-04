@@ -16,7 +16,19 @@ class PacienteController extends Controller
     public function index()
     {
         $pacie = Paciente::all(); 
-        return $pacie;
+        $paciente = [];
+        foreach ($pacie as $value) {
+            $paciente['id']= $value->id;
+            $paciente['paciente_nombre ']= $value->paciente_nombre;
+            $paciente['paciente_apellido'] = $value->paciente_apellido;
+            $paciente['paciente_cedula ']= $value->paciente_cedula;
+            $paciente['paciente_fecha_nac'] = date('d/m/Y', strtotime($value->paciente_fecha_nac));
+            $paciente['paciente_telefono'] = $value->paciente_telefono;
+            $paciente['paciente_estado ']=  $value->paciente_estado;
+           
+                  
+        }
+        return  $paciente;
     }
 
     /**
