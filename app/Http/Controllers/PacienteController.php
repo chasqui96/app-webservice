@@ -15,7 +15,10 @@ class PacienteController extends Controller
      */
     public function index()
     {
-        $pacie = Paciente::all();
+        $pacie = Paciente::all(); 
+        foreach ($pacie as $value) {
+            $pacie->paciente_fecha_nac = date('d/m/Y', strtotime($value->paciente_fecha_nac));
+        }
         return $pacie;
     }
 
