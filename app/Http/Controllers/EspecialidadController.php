@@ -16,7 +16,7 @@ class EspecialidadController extends Controller
     {
        $especialidad = Especialidad::all();
        //dd($espe);
-       return $especalidad;
+       return $especialidad;
     }
 
     /**
