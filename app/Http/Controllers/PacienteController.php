@@ -51,7 +51,7 @@ class PacienteController extends Controller
     public function store(Request $request)
     {
         $fechaNacimiento = str_replace('/', '-', $request->input("paciente_fecha_nac"));
-		$fechaNacimiento = date('Y-m-d', strtotime($fechaNacimiento ));
+		$fechaNacimiento = date('Y-m-d', strtotime($fechaNacimiento));
         $pacient = new Paciente;
         $pacient->paciente_nombre = $request->input("paciente_nombre");
         $pacient->paciente_apellido = $request->input("paciente_apellido");

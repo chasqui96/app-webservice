@@ -25,8 +25,9 @@ Route::get('/Listar', [App\Http\Controllers\EspecialidadController::class, 'inde
 Route::get('/MostrarEspe', [App\Http\Controllers\EspecialidadController::class, 'create'])->name('especialidades.create');
 Route::post('/GuardarEspe', [App\Http\Controllers\EspecialidadController::class, 'store'])->name('especialidades.store');
 Route::get('/Editar/{id}', [App\Http\Controllers\EspecialidadController::class, 'edit'])->name('especialidades.edit');
-Route::put('/EditarEspe/{id}', [App\Http\Controllers\EspecialidadController::class, 'update'])->name('especialidades.update');
-Route::delete('/EliminarEspe/{id}', [App\Http\Controllers\EspecialidadController::class, 'destroy'])->name('especialidades.destroy');
+Route::post('/EditarEspe/editar', [App\Http\Controllers\EspecialidadController::class, 'update'])->name('especialidades.update');
+Route::post('/EliminarEspe/eliminar', [App\Http\Controllers\EspecialidadController::class, 'destroy'])->name('especialidades.destroy');
+
 
 /// ------PACIENTES-----------------------------
 Route::get('/ListarPacientes', [App\Http\Controllers\PacienteController::class, 'index'])->name('pacientes.index');

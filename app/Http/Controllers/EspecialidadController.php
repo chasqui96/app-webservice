@@ -14,9 +14,9 @@ class EspecialidadController extends Controller
      */
     public function index()
     {
-       $espe = Especialidad::all();
+       $especialidad = Especialidad::all();
        //dd($espe);
-       return view('especialidades.index', compact('espe'));
+       return $especalidad;
     }
 
     /**
@@ -37,10 +37,16 @@ class EspecialidadController extends Controller
      */
     public function store(Request $request)
     {
-        $especia = new Especialidad;
-        $especia->espe_descrip = $request->espe_descrip;
-        $especia->save();
-        return redirect()->route('especialidades.index')->with('info','Espe Fue Modificiada');
+        $especialidad = new Especialidad;
+        $especialidad->espe_descrip = $request->input("especialidad_descripcion");
+        if ($especialidad->save()) {
+            return $especialidad;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo insertar',
+        ], 500);
 
     
     }
@@ -76,13 +82,19 @@ class EspecialidadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
       
-        $especia = Especialidad::find($id);
-        $especia->espe_descrip = $request->espe_descrip;
-        $especia->save();
-        return redirect()->route('especialidades.index')->with('info','Espe Fue Modificiada');
+        $especialidad = Especialidad::find($request->input("id"));
+        $especialidad->espe_descrip = $request->input("especialidad_descripcion");
+        if ($especialidad->save()) {
+            return $especialidad;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo insertar',
+        ], 500);
     }
 
     /**
@@ -91,10 +103,10 @@ class EspecialidadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $espe = Especialidad::find($id);
+        $espe =  Especialidad::find($request->input("id"));
         $espe->delete();
-        return back()->with('info', 'Fue eliminado exitosamente');
+        return $espe;
     }
 }
