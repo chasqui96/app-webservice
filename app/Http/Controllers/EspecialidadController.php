@@ -38,7 +38,7 @@ class EspecialidadController extends Controller
     public function store(Request $request)
     {
         $especialidad = new Especialidad;
-        $especialidad->espe_descrip = $request->input("especialidad_descripcion");
+        $especialidad->espe_descrip = $request->input("espe_descrip");
         if ($especialidad->save()) {
             return $especialidad;
         }
@@ -86,7 +86,7 @@ class EspecialidadController extends Controller
     {
       
         $especialidad = Especialidad::find($request->input("id"));
-        $especialidad->espe_descrip = $request->input("especialidad_descripcion");
+        $especialidad->espe_descrip = $request->input("espe_descrip");
         if ($especialidad->save()) {
             return $especialidad;
         }
