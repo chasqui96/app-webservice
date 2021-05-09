@@ -48,3 +48,6 @@ Route::post('/EditarPersonales/editar', [App\Http\Controllers\PersonalController
 Route::delete('/EliminarPersonales/{id}', [App\Http\Controllers\PersonalController::class, 'destroy'])->name('personales.destroy');
 Route::post('/CambiarEstadoPersonales', [App\Http\Controllers\PersonalController::class, 'cambiarEstado'])->name('personales.cambiar');
 
+/// ------AGENDAMIENTO-CUPOS-----------------------------
+Route::get('/ListarAgendamiento', [App\Http\Controllers\PersonalController::class, 'index'])->name('agendamiento.index');
+Route::get('/GuardarAgendamiento', [App\Http\Controllers\AgendamientoController::class, 'store'])->name('agendamiento.store');

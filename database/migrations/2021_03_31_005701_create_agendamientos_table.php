@@ -18,8 +18,8 @@ class CreateAgendamientosTable extends Migration
             $table->string("doc_registro",80);
             $table->string("espe_estado",80);
             $table->string("dias",80);
-            $table->timestamp("hora_desde");
-            $table->timestamp("hora_hasta");
+            $table->string("hora_desde");
+            $table->string("hora_hasta");
             $table->unsignedInteger('per_id');
             $table->unsignedInteger('espe_id');
  //           $table->timestamps();

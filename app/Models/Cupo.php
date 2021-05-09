@@ -9,4 +9,10 @@ class Cupo extends Model
 {
     public $timestamps = false;
     use HasFactory;
+
+    public function agendamientos()
+    {
+        return $this->belongsToMany(Agendamiento::class)->withPivot('agendamiento_id');;
+    }
+
 }

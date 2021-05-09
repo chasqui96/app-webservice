@@ -16,13 +16,11 @@ class CreateCuposTable extends Migration
         Schema::create('cupos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer("cantidad");
+            $table->string("horas",15);
             $table->integer("reservados");
             $table->date('fecha_cupos');
-            $table->unsignedInteger('per_id');
-            $table->unsignedInteger('espe_id');
-            $table->foreign('espe_id')->references('id')->on('especialidads');
-            $table->foreign('per_id')->references('id')->on('personals');
-  //          $table->foreign('agendamiento_id')->references('id')->on('agendamientos');
+            $table->unsignedInteger('agendamiento_id');
+            $table->foreign('agendamiento_id')->references('id')->on('agendamientos');
         });
     }
 
