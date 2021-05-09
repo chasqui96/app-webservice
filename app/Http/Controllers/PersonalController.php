@@ -55,6 +55,12 @@ class PersonalController extends Controller
         return $per;
     }
 
+    public function listarDoctor()
+    {
+        $per = Personal::where("tipo_persona","=","DOCTOR")->get();
+        return $per;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
