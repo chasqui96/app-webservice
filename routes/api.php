@@ -49,7 +49,7 @@ Route::delete('/EliminarPersonales/{id}', [App\Http\Controllers\PersonalControll
 Route::post('/CambiarEstadoPersonales', [App\Http\Controllers\PersonalController::class, 'cambiarEstado'])->name('personales.cambiar');
 
 /// ------AGENDAMIENTO-CUPOS-----------------------------
-Route::get('/ListarAgendamiento', [App\Http\Controllers\PersonalController::class, 'index'])->name('agendamiento.index');
+Route::get('/ListarAgendamiento', [App\Http\Controllers\AgendamientoController::class, 'index'])->name('agendamientos.index');
 Route::get('/ListarCupos', [App\Http\Controllers\AgendamientoController::class, 'listarCupos'])->name('agendamiento.index');
 Route::get('/ListarDoctor', [App\Http\Controllers\PersonalController::class, 'listarDoctor'])->name('personals.doctor');
 Route::post('/GuardarAgendamiento', [App\Http\Controllers\AgendamientoController::class, 'store'])->name('agendamiento.store');

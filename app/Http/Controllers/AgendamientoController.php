@@ -18,7 +18,8 @@ class AgendamientoController extends Controller
      */
     public function index()
     {
-        //
+        $users = Agendamiento::join('cupos', 'cupos.agendamiento_id', '=', 'agendamientos.id');
+        return $users;
     }
 
     /**
