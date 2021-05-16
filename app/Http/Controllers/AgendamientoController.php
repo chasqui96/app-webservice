@@ -39,55 +39,37 @@ class AgendamientoController extends Controller
      */
     public function store(Request $request)
     {       
-      
-        //$agendamientos = new Agendamiento;
-        //$agendamientos->doc_registro =   $request->input("doc_registro");
-        //$agendamientos->espe_estado = 'AGENDADO';
-        //$agendamientos->dias =   $request->input("dias");
-        //$agendamientos->hora_desde =   $request->input("hora_desde");
-        //$agendamientos->hora_hasta =   $request->input("hora_hasta");
-        //$agendamientos->per_id =   $request->input("per_id");
-        //$agendamientos->espe_id =   $request->input("espe_id");
-        //$agendamientos->save();
+        //guardamos el agendamiento 
+        $agendamientos = new Agendamiento;
+        $agendamientos->doc_registro =   $request->input("doc_registro");
+        $agendamientos->espe_estado = 'AGENDADO';
+        $agendamientos->dias =   $request->input("dias");
+        $agendamientos->hora_desde =   $request->input("hora_desde");
+        $agendamientos->hora_hasta =   $request->input("hora_hasta");
+        $agendamientos->per_id =   $request->input("per_id");
+        $agendamientos->espe_id =   $request->input("espe_id");
+        $agendamientos->save();
 
-        //$hora_inicio = '12:00';
-       // $hora_fin ='13:00';
-        //$intervalo = 30;
-       // $hora_inicio = new DateTime( $hora_inicio );
-        //$hora_fin    = new DateTime( $hora_fin );
-        //$hora_fin->modify('+1 second'); 
-        //if ($hora_inicio > $hora_fin) {
-           // $hora_fin->modify('+1 day');
-       // } 
-        //$intervalo = new DateInterval('PT'.$intervalo.'M');
-        //$periodo   = new DatePeriod($hora_inicio, $intervalo, $hora_fin);        
-        
-        //$i=1;
-       // $horas = [];
-         $timestamp = strtotime('1st January 2004'); //1072915200
+        $fechaDesde = $request->input("hora_desde");
+        $fechaHasta = $request->input("hora_hasta");
 
-        // esto imprime el año en un formato de dos dígitos
-        // sin embargo, ya que éste podría empezar con un "0",
-        // sólo se imprime "4"
-        echo idate('y', $timestamp);
+        $fecha1 = new DateTime($fechaDesde);//fecha inicial
+        $fecha2 = new DateTime($fechaHasta);//fecha de cierre
+        $intervalo = $fecha1->diff($fecha2);//Buscamos cuantas horas de diferencia se llevan para hacer el for
         $horas = array();
         $minutos = 30;
-        for( $i = 0; $i < ; ){
-          
-            $x = "12:00 +" . $i . " hour ";
-        
-            $y = "12:00 +" . $i   . " hour + ".$minutos." minutes";
-        
+        for( $i = 0; $i < $intervalo->format('%H') ; ){
+            $x = $fechaDesde." + " . $i . " hour ";
+            $y = $fechaDesde." + " . $i   . " hour + ".$minutos." minutes";
             $z = date('H:i', strtotime( $x ) ) . ' - ' . date('H:i', strtotime( $y ) );
-            array_push($horas,$z);
-            //$horas = $z;  
-            //$horasG= new Cupo;
-            //$horasG->agendamiento_id = Agendamiento::all()->last()->id;
-            //$horasG->cantidad = 1;
-            //$horasG->horas =  $horas;
-            //$horasG->reservados = 0;
-            //$horasG->fecha_cupos = date("Y-m-d");;
-            //$horasG->save();
+            $horas = $z;  
+            $horasG= new Cupo;
+            $horasG->agendamiento_id = Agendamiento::all()->last()->id;
+            $horasG->cantidad = 1;
+            $horasG->horas =  $horas;
+            $horasG->reservados = 0;
+            $horasG->fecha_cupos = date("Y-m-d");;
+            $horasG->save();
            $i+=1;
             
         }
