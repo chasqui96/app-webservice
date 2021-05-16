@@ -74,7 +74,7 @@ class AgendamientoController extends Controller
             
         }
 
-        dd($horas);
+       // dd($horas);
       
          return $agendamientos;
 
