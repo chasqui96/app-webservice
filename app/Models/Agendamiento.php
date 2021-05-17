@@ -14,4 +14,8 @@ class Agendamiento extends Model
     {
         return $this->belongsToMany(Cupo::class)->withPivot('cupo_id');
     }
+    public function personals()
+    {
+        return $this->belongsTo(Personal::class, 'per_id');
+    }
 }
