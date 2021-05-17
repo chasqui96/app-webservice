@@ -19,7 +19,7 @@ class AgendamientoController extends Controller
     public function index()
     {
         //
-        $agendamientos  = Agendamiento::join('personals','personals.id','=','agendamientos.per_id')->get(['agendamientos.*', 'personals.per_nombre','personals.per_apellido']);;
+        $agendamientos  = Agendamiento::join('personals','personals.id','=','agendamientos.per_id')->join('especialidads', 'especialidads.id', '=', 'agendamientos.espe_id')->get(['agendamientos.*', 'personals.per_nombre','personals.per_apellido','especialidads.espe_descrip']);;
         //dd($agendamientos);
         $pacear = [];
         $horas = [];
@@ -30,6 +30,7 @@ class AgendamientoController extends Controller
              $pacear[$conteo]['hora_desde'] = $value->hora_desde;
              $pacear[$conteo]['hora_hasta'] = $value->hora_hasta;
              $pacear[$conteo]['doctor'] = $value->per_nombre." ".$value->apellido;
+             $pacear[$conteo]['especialidad'] = $value->espe_descrip;
              $pacear[$conteo]['dias'] = $value->dias;
              $pacear[$conteo]['doc_registro'] = $value->doc_registro;
              $pacear[$conteo]['espe_id'] = $value->espe_id;

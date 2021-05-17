@@ -18,4 +18,8 @@ class Agendamiento extends Model
     {
         return $this->belongsTo(Personal::class, 'per_id');
     }
+    public function especialidads()
+    {
+        return $this->belongsTo(Especialidad::class, 'espe_id');
+    }
 }
