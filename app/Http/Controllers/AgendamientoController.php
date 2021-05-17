@@ -42,7 +42,7 @@ class AgendamientoController extends Controller
                 $i++;
              }
              $pacear[$conteo]['horas'] = $horas;
-            
+            $conteo++;
             
          }
         return $pacear;
