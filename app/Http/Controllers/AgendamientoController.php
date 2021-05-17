@@ -155,9 +155,9 @@ class AgendamientoController extends Controller
         //
     }
 
-    public function listarCupos($id)
+    public function cupos($id)
     {
-        $per = Cupo::where("agendamiento_id","=",$i)->get();
-        return $per;
+        $cupos = Cupo::where("agendamiento_id","=",$id)->get();
+        return $cupos;
     }
 }
