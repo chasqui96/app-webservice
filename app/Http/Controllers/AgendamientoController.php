@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Agendamiento;
 use App\Models\Cupo;
+use App\Models\ReservaTurno;
 use DateTime;
 use Date;
 use DatePeriod;
@@ -158,7 +159,35 @@ class AgendamientoController extends Controller
 
     public function cupos($id)
     {
-        $cupos = Cupo::where("agendamiento_id","=",$id)->get();
+        $cupos = Cupo::where("agendamiento_id","=",$id)->where('reservados', 0)->get();
         return $cupos;
     }
+
+    public function guardarReserva(Request $request)
+    {       
+
+        $turnoFecha = str_replace('/', '-', $request->input("turno_fecha"));
+		$turnoFecha = date('Y-m-d', strtotime($turnoFecha));
+        $reserva = new ReservaTurno;
+        $reserva->turno_fecha =  $turnoFecha;
+        $reserva->turno_estado = 'RESERVADO';
+        $reserva->dias =   $request->input("dias");
+        $reserva->per_id =   $request->input("per_id");
+        $reserva->espe_id =   $request->input("espe_id");
+        $reserva->cupo_id =   $request->input("cupo_id");
+        $reserva->paciente_id =   $request->input("paciente_id");
+        if ($reserva->save()){
+            $cupo =  Cupo::find($request->input("cupo_id"));
+            $cupo->reservados = 1;
+            $cupo->save();
+            return $reserva;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'Error de Rerserva',
+        ], 500);
+       
+    }
+
 }
