@@ -85,6 +85,7 @@ class AgendamientoController extends Controller
         $intervalo = $fecha1->diff($fecha2);//Buscamos cuantas horas de diferencia se llevan para hacer el for
         $horas = array();
         $minutos = 30;
+        $cupo =1;
         for( $i = 0; $i < $intervalo->format('%H') ; ){
             $x = $fechaDesde." + " . $i . " hour ";
             $y = $fechaDesde." + " . $i   . " hour + ".$minutos." minutes";
@@ -92,13 +93,13 @@ class AgendamientoController extends Controller
             $horas = $z;  
             $horasG= new Cupo;
             $horasG->agendamiento_id = Agendamiento::all()->last()->id;
-            $horasG->cantidad = $i;
+            $horasG->cantidad = $cupo;
             $horasG->horas =  $horas;
             $horasG->reservados = 0;
             $horasG->fecha_cupos = date("Y-m-d");;
             $horasG->save();
             $i+=1;
-            
+            $cupo++;
         }
       
         return $agendamientos;
