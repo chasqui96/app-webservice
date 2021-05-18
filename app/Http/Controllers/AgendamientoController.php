@@ -92,7 +92,7 @@ class AgendamientoController extends Controller
             $horas = $z;  
             $horasG= new Cupo;
             $horasG->agendamiento_id = Agendamiento::all()->last()->id;
-            $horasG->cantidad = 1;
+            $horasG->cantidad = $i;
             $horasG->horas =  $horas;
             $horasG->reservados = 0;
             $horasG->fecha_cupos = date("Y-m-d");;

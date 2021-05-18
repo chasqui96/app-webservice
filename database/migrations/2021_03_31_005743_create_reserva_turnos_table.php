@@ -18,10 +18,11 @@ class CreateReservaTurnosTable extends Migration
             $table->date("turno_fecha");
             $table->string("turno_estado",80);
             $table->string("dias",80);
-            $table->string("hora_desde",80);
-            $table->unsignedInteger('per_id');
-            $table->unsignedInteger('espe_id');
+            $table->integer('cupo_id');
+            $table->integer('per_id');
+            $table->integer('espe_id');
             $table->integer('paciente_id');
+            $table->foreign('cupo_id')->references('id')->on('cupos');
             $table->foreign('espe_id')->references('id')->on('especialidads');
             $table->foreign('per_id')->references('id')->on('personals');
             $table->foreign('paciente_id')->references('id')->on('pacientes');
