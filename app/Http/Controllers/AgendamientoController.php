@@ -37,7 +37,7 @@ class AgendamientoController extends Controller
              $pacear[$conteo]['espe_id'] = $value->espe_id;
              $pacear[$conteo]['per_id'] = $value->per_id;
              $pacear[$conteo]['horas'] = "";
-             $cupos = Cupo::where("agendamiento_id","=",$id)->get();
+             $cupos = Cupo::where("agendamiento_id","=",$id)->where('reservados', 0)->get();
              $i=0;
              foreach ($cupos as  $value2) {
                 $pacear[$conteo]['horas'] .="Cupo ".$value2->cantidad.": ".$value2->horas."\n";
