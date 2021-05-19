@@ -22,4 +22,8 @@ class ReservaTurno extends Model
     {
         return $this->belongsTo(Especialidad::class, 'espe_id');
     }
+    public function pacientes()
+    {
+        return $this->belongsTo(Paciente::class, 'paciente_id');;
+    }
 }

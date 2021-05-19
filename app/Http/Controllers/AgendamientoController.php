@@ -193,14 +193,15 @@ class AgendamientoController extends Controller
     public function listarReservas()
     {
         //
-        $agendamientos  = ReservaTurno::join('cupos','cupos.id','=','reserva_turnos.cupo_id')->join('personals','personals.id','=','reserva_turnos.per_id')->join('especialidads', 'especialidads.id', '=', 'reserva_turnos.espe_id')->get(['reserva_turnos.*', 'personals.per_nombre','personals.per_apellido','especialidads.espe_descrip','cupos.horas']);;
+        $agendamientos  = ReservaTurno::join('cupos','cupos.id','=','reserva_turnos.cupo_id')->join('personals','personals.id','=','reserva_turnos.per_id')->join('especialidads', 'especialidads.id', '=', 'reserva_turnos.espe_id')->join('pacientes','pacientes.id','=','reserva_turnos.paciente_id')->get(['reserva_turnos.*', 'personals.per_nombre','personals.per_apellido','especialidads.espe_descrip','cupos.horas','pacientes.paciente_nombre','pacientes.paciente_apellido']);;
         //dd($agendamientos);
         $pacear = [];
         $conteo = 0;
         foreach ($agendamientos as  $value) {
              $id = $value->id;
              $pacear[$conteo]['id'] = $value->id;
-             $pacear[$conteo]['doctor'] = $value->per_nombre." ".$value->apellido;
+             $pacear[$conteo]['doctor'] = $value->per_nombre." ".$value->per_apellido;
+             $pacear[$conteo]['paciente'] = $value->paciente_nombre." ".$value->paciente_apellido;
              $pacear[$conteo]['especialidad'] = $value->espe_descrip;
              $pacear[$conteo]['dias'] = $value->dias;
              $pacear[$conteo]['turno_estado'] = $value->turno_estado;
