@@ -12,7 +12,7 @@ class ReservaTurno extends Model
 
     public function cupos()
     {
-        return $this->belongsTo(Personal::class, 'cupo_id');;
+        return $this->belongsTo(Cupo::class, 'cupo_id');;
     }
     public function personals()
     {

@@ -55,3 +55,5 @@ Route::get('/ListarDoctor', [App\Http\Controllers\PersonalController::class, 'li
 Route::post('/GuardarAgendamiento', [App\Http\Controllers\AgendamientoController::class, 'store'])->name('agendamiento.store');
 Route::post('/GuardarReserva', [App\Http\Controllers\AgendamientoController::class, 'guardarReserva'])->name('reserva.store');
 Route::get('/Agendamientos/cupos/{id}', [App\Http\Controllers\AgendamientoController::class, 'cupos'])->name('cupos.get');
+Route::get('/ListarReservas', [App\Http\Controllers\AgendamientoController::class, 'listarReservas'])->name('reservas.get');
+Route::post('/AnularReserva', [App\Http\Controllers\AgendamientoController::class, 'anularReservas'])->name('anular.get');

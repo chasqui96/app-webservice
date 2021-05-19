@@ -36,15 +36,16 @@ class AgendamientoController extends Controller
              $pacear[$conteo]['doc_registro'] = $value->doc_registro;
              $pacear[$conteo]['espe_id'] = $value->espe_id;
              $pacear[$conteo]['per_id'] = $value->per_id;
+             $pacear[$conteo]['horas'] = "";
              $cupos = Cupo::where("agendamiento_id","=",$id)->get();
              $i=0;
              foreach ($cupos as  $value2) {
-                $horas[$i]['cupo'] = $value2->horas;
+                $pacear[$conteo]['horas'] .="Cupo ".$value2->cantidad.": ".$value2->horas."\n";
                 $i++;
              }
-             $pacear[$conteo]['horas'] = $horas;
+          
             $conteo++;
-            
+            //dd($pacear);
          }
         return $pacear;
     }
@@ -188,6 +189,43 @@ class AgendamientoController extends Controller
             'message' => 'Error de Rerserva',
         ], 500);
        
+    }
+    public function listarReservas()
+    {
+        //
+        $agendamientos  = ReservaTurno::join('cupos','cupos.id','=','reserva_turnos.cupo_id')->join('personals','personals.id','=','reserva_turnos.per_id')->join('especialidads', 'especialidads.id', '=', 'reserva_turnos.espe_id')->get(['reserva_turnos.*', 'personals.per_nombre','personals.per_apellido','especialidads.espe_descrip','cupos.horas']);;
+        //dd($agendamientos);
+        $pacear = [];
+        $conteo = 0;
+        foreach ($agendamientos as  $value) {
+             $id = $value->id;
+             $pacear[$conteo]['id'] = $value->id;
+             $pacear[$conteo]['doctor'] = $value->per_nombre." ".$value->apellido;
+             $pacear[$conteo]['especialidad'] = $value->espe_descrip;
+             $pacear[$conteo]['dias'] = $value->dias;
+             $pacear[$conteo]['turno_estado'] = $value->turno_estado;
+             $pacear[$conteo]['turno_fecha'] =  date('d/m/Y', strtotime($value->turno_fecha));
+             $pacear[$conteo]['horas'] = $value->horas;
+             $conteo++;
+            //dd($pacear);
+         }
+        return $pacear;
+    }
+    public function anularReservas(Request $request)
+    {
+        $reserva = Paciente::find($request->input("id"));
+        $reserva->paciente_estado = 'ANULADO';
+        if ($reserva->save()) {
+            $cupo =  Cupo::find($request->input("cupo_id"));
+            $cupo->reservados = 0;
+            $cupo->save();
+            return $reserva;
+        }
+
+        return response()->json([
+            'status'  => 500,
+            'message' => 'No se pudo cambiar de estado',
+        ], 500);
     }
 
 }
