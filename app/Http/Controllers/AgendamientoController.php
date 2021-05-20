@@ -214,8 +214,8 @@ class AgendamientoController extends Controller
     }
     public function anularReservas(Request $request)
     {
-        $reserva = Paciente::find($request->input("id"));
-        $reserva->paciente_estado = 'ANULADO';
+        $reserva = ReservaTurno::find($request->input("id"));
+        $reserva->turno_estado = 'ANULADO';
         if ($reserva->save()) {
             $cupo =  Cupo::find($request->input("cupo_id"));
             $cupo->reservados = 0;
