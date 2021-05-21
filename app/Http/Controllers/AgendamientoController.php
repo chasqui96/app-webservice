@@ -36,17 +36,24 @@ class AgendamientoController extends Controller
              $pacear[$conteo]['doc_registro'] = $value->doc_registro;
              $pacear[$conteo]['espe_id'] = $value->espe_id;
              $pacear[$conteo]['per_id'] = $value->per_id;
-             $pacear[$conteo]['horas'] = "";
+             
              $cupos = Cupo::where("agendamiento_id","=",$id)->where('reservados',"=",0)->get();
-             $i=0;
-             foreach ($cupos as  $value2) {
-                $pacear[$conteo]['horas'] .="Cupo ".$value2->cantidad.": ".$value2->horas."\n";
-                $i++;
+             
+             $pacear[$conteo]['horas'] = "";
+             if(count($cupos) > 0 ){
+                foreach ($cupos as  $value2) {
+                    $pacear[$conteo]['horas'] .="Cupo ".$value2->cantidad.": ".$value2->horas."\n";
+                 }
+             }else {
+                $pacear[$conteo]['horas'] = 'AGOTADO';
+                
              }
+            
           
             $conteo++;
-            //dd($pacear);
+       
          }
+         //dd($pacear);
         return $pacear;
     }
 
@@ -204,6 +211,7 @@ class AgendamientoController extends Controller
              $pacear[$conteo]['paciente'] = $value->paciente_nombre." ".$value->paciente_apellido;
              $pacear[$conteo]['especialidad'] = $value->espe_descrip;
              $pacear[$conteo]['dias'] = $value->dias;
+             $pacear[$conteo]['cupo_id'] = $value->cupo_id;
              $pacear[$conteo]['turno_estado'] = $value->turno_estado;
              $pacear[$conteo]['turno_fecha'] =  date('d/m/Y', strtotime($value->turno_fecha));
              $pacear[$conteo]['horas'] = $value->horas;
@@ -216,10 +224,11 @@ class AgendamientoController extends Controller
     {
         $reserva = ReservaTurno::find($request->input("id"));
         $reserva->turno_estado = 'ANULADO';
+        $cupo =  Cupo::find($request->input("cupo_id"));
+        $cupo->reservados = 0;
+        $cupo->save();
         if ($reserva->save()) {
-            $cupo =  Cupo::find($request->input("cupo_id"));
-            $cupo->reservados = 0;
-            $cupo->save();
+            
             return $reserva;
         }
 
